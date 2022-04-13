@@ -22,9 +22,10 @@ w=2*np.pi*f
 V1=50
 Q1=200
 Q2=700
-# ke=np.linspace(0.05, 0.4, num=8)
-ke=0.2
-l_FromSourceToCp=np.linspace(0.0, 1.7, num=18)
+ke=np.linspace(0.05, 0.4, num=8)
+# ke=0.2
+# l_FromSourceToCp=np.linspace(0.0, 1.7, num=18)
+l_FromSourceToCp=1
 Sh_lambda=1.7
 Sh_Rsx=60
 Sh_C=1/(Sh_Rsx*Sh_lambda*f)
@@ -43,7 +44,8 @@ C2=1/(L2*w**2)
 # print("L2 = " + str(L2))
 r2=w*L2/Q2
 Lm=ke*np.sqrt(L1*L2)
-Rl_opt=np.sqrt(r2**2+(r2*(w*L2)**2)/(r1+Sh_Rsx))
+Rl_opt=np.sqrt(r2**2+(r2*(w*Lm)**2)/(r1+Sh_Rsx))
+# Rl_opt=np.linspace(1, 10, num=10)
 # print("Rl_opt = " + str(Rl_opt))
 
 calcEtaAndZ_FromSource(w,l_FromSourceToCp,Sh_Rsx,Sh_beta,L1,Cs,r1,L2,C2,r2,Lm,Rl_opt)
