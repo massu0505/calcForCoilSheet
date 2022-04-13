@@ -49,6 +49,7 @@ Rl_opt=np.sqrt(r2**2+(r2*(w*Lm)**2)/(r1+Sh_Rsx))
 # print("Rl_opt = " + str(Rl_opt))
 
 calcEtaAndZ_FromSource(w,l_FromSourceToCp,Sh_Rsx,Sh_beta,L1,Cs,r1,L2,C2,r2,Lm,Rl_opt)
+calcEtaAndZ_fromRL(w,Sh_Rsx,L1,r1,L2,r2,Lm)
 
 # %%
 def calcEtaAndZ_FromSource(w,l_FromSourceToCp,Sh_Rsx,Sh_beta,L1,Cs,r1,L2,C2,r2,Lm,RL):
@@ -75,5 +76,23 @@ def calcEtaAndZ_FromSource(w,l_FromSourceToCp,Sh_Rsx,Sh_beta,L1,Cs,r1,L2,C2,r2,L
 
     return
 
+# %%
+def calcEtaAndZ_fromRL(w,Sh_Rsx,L1,r1,L2,r2,Lm):
 
+    Z1=r1+2*Sh_Rsx+1j*w*L1
+    Z2=(w*Lm)**2/Z1
+    Z3=r1+1j*w*L2+Z2
+    Xc=Z3.imag
+    Ccoil=1/(w*Xc)
+    Z4=Z3-1/(w*Ccoil)
+    print("Ccoil = " + str(Ccoil))
+    
+    Pr1=r1*((2*Sh_Rsx+r2)**2 + (w*Lm)**2)
+    Pr2=r2*(w*Lm)**2
+    Pz1=Sh_Rsx*(w*Lm)**2
+    Pz2=Sh_Rsx*(w*Lm)**2
+    eta=Pz1/(Pr1+Pr2+Pz1+Pz2)
+    print("eta_fromCoil = " + str(eta))
+
+    return
 # %%
