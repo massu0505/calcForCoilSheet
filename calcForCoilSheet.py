@@ -21,13 +21,14 @@ f=6.78*10**6
 w=2*np.pi*f
 V1=50
 Q1=200
-Q2=700
+Q2=500
 # ke=np.linspace(0.05, 0.4, num=8)
 ke=0.2
-l_FromSourceToCp=np.linspace(0, 1.0, num=21)
-# l_FromSourceToCp=1
+# l_FromSourceToCp=np.linspace(0, 1.0, num=21)
+l_FromSourceToCp=0
 Sh_lambda=1.7
 Sh_Rsx=15
+Sh_Rsx=np.linspace(10, 100, num=10)
 Sh_C=1/(Sh_Rsx*Sh_lambda*f)
 Sh_L=Sh_Rsx/(Sh_lambda*f)
 Sh_beta=2*np.pi/Sh_lambda
@@ -39,6 +40,7 @@ Cs=1/(L1*w**2)
 r1=w*L1/Q1
 #カプラ側が2
 L2=5.946*10**(-6)
+# L2=np.linspace(5*10**(-6),100*10**(-6), num=10)
 C2=1/(L2*w**2)
 # C2=92.4*10**(-12)
 # print("L2 = " + str(L2))
